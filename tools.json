@@ -1,0 +1,74 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "getItemsInPath",
+      "description": "Returns all files and folders inside a given directory path.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Path to get the items from"
+          }
+        },
+        "required": ["path"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "writeIntoFile",
+      "description": "Writes content into a file unless it is forbidden.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "file": {
+            "type": "string",
+            "description": "Target file path."
+          },
+          "content": {
+            "type": "string",
+            "description": "Content to write into the file."
+          }
+        },
+        "required": ["file", "content"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "readFile",
+      "description": "Reads and returns the full contents of a file.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "file": {
+            "type": "string",
+            "description": "File path to read."
+          }
+        },
+        "required": ["file"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "runPythonFile",
+      "description": "Runs a Python file. Must include .py",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "file": {
+            "type": "string",
+            "description": "Python file path to execute."
+          }
+        },
+        "required": ["file"]
+      }
+    }
+  }
+]
