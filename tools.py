@@ -13,18 +13,43 @@ forbidden = [
 def getItemsInPath(path):
     return os.listdir(path)
 
+def createEmptyFile(file):
+    open(file, "w").close()
+
 def writeIntoFile(file, content):
     if file in forbidden:
         return "You are not allowed to modify these files."
-    with open(file, "w") as f:
-        f.write(content)
-    return "Wrote content into file successfully."
+    try:
+        with open(file, "w") as f:
+            f.write(content)
+        return "Wrote content into file successfully."
+    except Exception:
+        return "Error occured."
     
 def readFile(file):
-    with open(file, "r") as f:
-        output = f.read()
-    return output
+    try:
+        with open(file, "r") as f:
+            output = f.read()
+        return "content:\n" + output    
+    except Exception:
+        return "Error occured."
 
 def runPythonFile(file):
-    subprocess.run("python " + file)
+    if file in forbidden:
+        return "Cannot run this file."
+    try:
+        result = subprocess.run(
+            "python " + file,
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+
+        output = result.stdout
+        return output
+    except Exception:
+        return "Error occured."
+
+def reason(thought):
+    return thought
 

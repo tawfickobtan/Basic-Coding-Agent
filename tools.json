@@ -70,5 +70,39 @@
         "required": ["file"]
       }
     }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "reason",
+      "description": "Use if you need more thinking to perform some task before reprompting user.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "thought": {
+            "type": "string",
+            "description": "Thought you are having."
+          }
+        },
+        "required": ["thought"]
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "createEmptyFile",
+      "description": "Creates empty file or overwrites file of that name into an empty one.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "file": {
+            "type": "string",
+            "description": "File to create."
+          }
+        },
+        "required": ["file"]
+      }
+    }
   }
 ]
