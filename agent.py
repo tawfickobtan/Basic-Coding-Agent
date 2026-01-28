@@ -81,7 +81,7 @@ toolPanel = Text("🛠️ Executing: ",
 response = complete(messages)
 messages.append(response)
 console.print(agentPanel)
-print(Markdown(response.content))
+console.print(Markdown(response.content))
 print("_________________")
 print()
 
@@ -120,7 +120,7 @@ while True:
                 })
         else:
             console.print(agentPanel)
-            print(Markdown(response.content))
+            console.print(Markdown(response.content))
             print("_________________")
             print() 
             break
