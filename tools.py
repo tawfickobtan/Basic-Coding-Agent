@@ -41,11 +41,11 @@ def writeIntoFile(file, content):
     
 def readFile(file):
     try:
-        with open(file, "r") as f:
+        with open(file, "r", encoding="utf-8") as f:
             output = f.read()
         return "content:\n" + output    
-    except Exception:
-        return "Error occured."
+    except Exception as e:
+        return "Error occured. " + str(e)
 
 def delete(file):  
     if file in forbidden:
@@ -95,10 +95,13 @@ def getCurrentDirectory():
     try:
         cwd = os.getcwd()
         return f"Current directory is: {cwd}"
-    except Exception:
-        return "Error occured."
+    except Exception as e:
+        return "Error occured. " + str(e)
 
 def runCommand(command):
+    userInput = input("Are you sure you want to run this command? (y/n): ")
+    if userInput.lower().strip() != "y":
+        return "Command execution cancelled by user."
     try:
         result = subprocess.run(
             command,
@@ -109,8 +112,8 @@ def runCommand(command):
 
         output = result.stdout
         return output
-    except Exception:
-        return "Error occured."
+    except Exception as e:
+        return "Error occured. " + str(e)
 
 def fileExists(file):
     try:
