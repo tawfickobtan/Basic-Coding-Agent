@@ -73,7 +73,6 @@ messages = [
                 "\n\n" + "Current Items in Directory:\n" + tools.getItemsInPath(tools.getCurrentDirectory())}
 ]
 
-print(messages[0]["content"])
 
 agentPanel = Panel("🤖 James:",
                      border_style="green",
