@@ -1,4 +1,3 @@
-import os
 from llm import complete
 from rich.console import Console
 from rich.panel import Panel
@@ -62,15 +61,19 @@ welcome_panel = Panel(
 )
 console.print(welcome_panel)
 console.print(Text("Model: ", style="bold yellow") + Text(config.get("model", "openai/gpt-oss-120b"), style="white"))
-console.print(Text("Current Directory: ", style="bold yellow") + Text(os.getcwd(), style="white"))
+console.print(Text("Current Directory: ", style="bold yellow") + Text(tools.getCurrentDirectory(), style="white"))
 
 console.print()  # Blank line for spacing
 
 # Initialise messages with system prompt
 messages = [
     {"role": "system",
-     "content": systemPrompt}
+     "content": systemPrompt +
+                "\n\n" + "Current Directory: " + tools.getCurrentDirectory() +
+                "\n\n" + "Current Items in Directory:\n" + tools.getItemsInPath(tools.getCurrentDirectory())}
 ]
+
+print(messages[0]["content"])
 
 agentPanel = Panel("🤖 James:",
                      border_style="green",

@@ -9,6 +9,7 @@ forbidden = [
     "tools.json",
     "tools.py",
     ".gitignore",
+    ".git",
     "system_prompt.txt"
 ]
 
@@ -16,8 +17,8 @@ def getItemsInPath(path):
     try:
         items = os.listdir(path)
         return "\n".join(items)
-    except Exception:
-        return "Error occured."
+    except Exception as e:
+        return "Error occured. " + str(e)
 
 def createFile(file):
     if file in forbidden:
@@ -94,7 +95,7 @@ def copyFile(source, destination):
 def getCurrentDirectory():
     try:
         cwd = os.getcwd()
-        return f"Current directory is: {cwd}"
+        return cwd
     except Exception as e:
         return "Error occured. " + str(e)
 
